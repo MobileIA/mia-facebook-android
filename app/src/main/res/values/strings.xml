@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MobileiA Facebook</string>
+    <string name="facebook_app_id">794553410727704</string>
+    <string name="fb_login_protocol_scheme">fb794553410727704</string>
+</resources>
