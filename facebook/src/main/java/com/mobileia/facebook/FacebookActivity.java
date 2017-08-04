@@ -77,12 +77,16 @@ public class FacebookActivity extends Activity implements FacebookCallback<Login
 
     @Override
     public void onCancel() {
+        // Llamamos al listener
+        MobileiaFacebook.getInstance().processErrorResponse();
         // Finalizamos el login
         finished();
     }
 
     @Override
     public void onError(FacebookException error) {
+        // Llamamos al listener
+        MobileiaFacebook.getInstance().processErrorResponse();
         // Finalizamos el login
         finished();
     }

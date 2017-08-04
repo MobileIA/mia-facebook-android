@@ -3,6 +3,7 @@ package com.mobileia.facebook.builder;
 import android.app.Activity;
 
 import com.mobileia.facebook.MobileiaFacebook;
+import com.mobileia.facebook.listener.OnErrorLogin;
 import com.mobileia.facebook.listener.OnSuccessLogin;
 
 import java.util.Arrays;
@@ -43,6 +44,16 @@ public class LoginBuilder {
      */
     public LoginBuilder withSuccessResult(OnSuccessLogin listener){
         MobileiaFacebook.getInstance().setSuccessListener(listener);
+        return this;
+    }
+
+    /**
+     * Configura el manejador para cuando el usuario no se pudo loguear
+     * @param listener
+     * @return
+     */
+    public LoginBuilder withErrorResult(OnErrorLogin listener){
+        MobileiaFacebook.getInstance().setErrorListener(listener);
         return this;
     }
 

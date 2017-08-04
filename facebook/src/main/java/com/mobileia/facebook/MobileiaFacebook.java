@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 
 import com.mobileia.facebook.entity.Profile;
+import com.mobileia.facebook.listener.OnErrorLogin;
 import com.mobileia.facebook.listener.OnSuccessLogin;
 
 import java.util.Collection;
@@ -26,6 +27,10 @@ public class MobileiaFacebook {
      */
     protected OnSuccessLogin mSuccessListener;
     /**
+     * Almacena listener para las respuestas erroneas
+     */
+    protected OnErrorLogin mErrorListener;
+    /**
      * Determina si se esta logueando o no.
      */
     public boolean isLoading = false;
@@ -46,6 +51,15 @@ public class MobileiaFacebook {
     public void processSuccessResponse(Profile profile){
         if(mSuccessListener != null){
             mSuccessListener.onSuccess(profile);
+        }
+    }
+
+    /**
+     * Funcion que se llama si no se pudo loguear
+     */
+    public void processErrorResponse(){
+        if(mErrorListener != null){
+            mErrorListener.onError();
         }
     }
     /**
@@ -71,6 +85,12 @@ public class MobileiaFacebook {
     public void setSuccessListener(OnSuccessLogin listener){
         this.mSuccessListener = listener;
     }
+
+    /**
+     * Setea el listener cuando no se loguea
+     * @param listener
+     */
+    public void setErrorListener(OnErrorLogin listener){ this.mErrorListener = listener; }
 
     /**
      * Obtiene los permisos configurados
