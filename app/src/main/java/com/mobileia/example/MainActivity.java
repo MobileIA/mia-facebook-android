@@ -21,12 +21,14 @@ public class MainActivity extends AppCompatActivity {
     public void onClickFacebook(View view){
         new LoginBuilder()
                 .withActivity(this)
-                .withPermissions(LoginBuilder.PERMISSIONS_WITH_INFO)
+                .withPermissions(LoginBuilder.PERMISSIONS_WITH_INFO_AND_FRIENDS)
                 .withSuccessResult(new OnSuccessLogin() {
                     @Override
                     public void onSuccess(Profile profile) {
                         System.out.println("Se logueo correctamente");
 
+                        System.out.println("USER: " + profile.id);
+                        System.out.println("USER: " + profile.token);
                         System.out.println("USER: " + profile.firstname);
                         System.out.println("USER: " + profile.lastname);
                         System.out.println("USER: " + profile.email);
