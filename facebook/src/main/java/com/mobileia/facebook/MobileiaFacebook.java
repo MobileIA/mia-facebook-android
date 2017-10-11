@@ -45,7 +45,7 @@ public class MobileiaFacebook {
     }
 
     /**
-     * Funcino que se llama una vez logueado al usuario
+     * Funcion que se llama una vez logueado al usuario
      * @param profile
      */
     public void processSuccessResponse(Profile profile){
@@ -57,9 +57,9 @@ public class MobileiaFacebook {
     /**
      * Funcion que se llama si no se pudo loguear
      */
-    public void processErrorResponse(){
+    public void processErrorResponse(String message){
         if(mErrorListener != null){
-            mErrorListener.onError();
+            mErrorListener.onError(message);
         }
     }
     /**

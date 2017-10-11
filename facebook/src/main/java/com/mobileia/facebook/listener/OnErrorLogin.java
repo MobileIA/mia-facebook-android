@@ -5,5 +5,5 @@ package com.mobileia.facebook.listener;
  */
 
 public interface OnErrorLogin {
-    void onError();
+    void onError(String message);
 }
