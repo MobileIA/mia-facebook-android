@@ -55,6 +55,8 @@ public class FacebookActivity extends Activity implements FacebookCallback<Login
         }
         // Seteamos login
         MobileiaFacebook.getInstance().isLoading = true;
+        // Cerrar sesión por las dudas
+        LoginManager.getInstance().logOut();
         // Iniciamos login con Facebook
         LoginManager.getInstance().logInWithReadPermissions(this, MobileiaFacebook.getInstance().getPermissions());
     }

@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .withErrorResult(new OnErrorLogin() {
                     @Override
-                    public void onError() {
-                        System.out.println("NO se logueo");
+                    public void onError(String message) {
+                        System.out.println("NO se logueo: " + message);
                     }
                 })
                 .build();
