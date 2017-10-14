@@ -44,6 +44,8 @@ public class FacebookActivity extends Activity implements FacebookCallback<Login
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         // Crear manager para facebook
         createCallbackManager();
+        // Cerrar sesión por las dudas
+        LoginManager.getInstance().logOut();
     }
 
     @Override
@@ -55,8 +57,6 @@ public class FacebookActivity extends Activity implements FacebookCallback<Login
         }
         // Seteamos login
         MobileiaFacebook.getInstance().isLoading = true;
-        // Cerrar sesión por las dudas
-        LoginManager.getInstance().logOut();
         // Iniciamos login con Facebook
         LoginManager.getInstance().logInWithReadPermissions(this, MobileiaFacebook.getInstance().getPermissions());
     }
@@ -79,6 +79,14 @@ public class FacebookActivity extends Activity implements FacebookCallback<Login
 
     @Override
     public void onCancel() {
+        // Obtener AccessToken por si ya esta generado
+        AccessToken token = AccessToken.getCurrentAccessToken();
+        // Verificar si ya existe el AccessToken
+        if(token != null){
+            // Pedimos los datos del usuario
+            requestInformation(token);
+            return;
+        }
         // Llamamos al listener
         MobileiaFacebook.getInstance().processErrorResponse("Se ha cancelado la solicitud.");
         // Finalizamos el login
