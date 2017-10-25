@@ -6,8 +6,7 @@
         android:supportsRtl="true">
         <activity
             android:name=".FacebookActivity"
-            android:theme="@style/MobileiaFacebook.Internal.Theme.Transparent"
-            android:launchMode="singleInstance" />
+            android:theme="@style/MobileiaFacebook.Internal.Theme.Transparent" />
     </application>
 
 </manifest>
