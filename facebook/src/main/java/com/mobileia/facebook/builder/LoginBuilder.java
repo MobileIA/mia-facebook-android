@@ -15,11 +15,11 @@ import java.util.Collection;
 
 public class LoginBuilder {
     /**
-     * Constante que contiene los permisos necesarios para obtener la información basica del usuario.
+     * Constante que contiene los permisos necesarios para obtener la informacion basica del usuario.
      */
     public static final Collection<String> PERMISSIONS_WITH_INFO = Arrays.asList("public_profile", "email");
     /**
-     * Constante que contiene los permisos necesarios para obtener la información basica del usuario y los amigos.
+     * Constante que contiene los permisos necesarios para obtener la informacion basica del usuario y los amigos.
      */
     public static final Collection<String> PERMISSIONS_WITH_INFO_AND_FRIENDS = Arrays.asList("public_profile", "email", "user_friends");
 

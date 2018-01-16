@@ -44,7 +44,7 @@ public class FacebookActivity extends Activity implements FacebookCallback<Login
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         // Crear manager para facebook
         createCallbackManager();
-        // Cerrar sesión por las dudas
+        // Cerrar sesion por las dudas
         LoginManager.getInstance().logOut();
     }
 
