@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/MobileIA/mia-facebook-android'
     gitUrl = 'https://github.com/MobileIA/mia-facebook-android.git'
 
-    libraryVersion = '0.0.10'
+    libraryVersion = '0.0.11'
 
     developerId = 'mobileia'
     developerName = 'MobileIA'
@@ -32,8 +32,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 10
-        versionName "0.0.10"
+        versionCode 11
+        versionName "0.0.11"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
