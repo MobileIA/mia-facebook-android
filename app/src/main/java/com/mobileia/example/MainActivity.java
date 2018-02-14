@@ -8,7 +8,11 @@ import com.mobileia.facebook.MobileiaFacebook;
 import com.mobileia.facebook.builder.LoginBuilder;
 import com.mobileia.facebook.entity.Profile;
 import com.mobileia.facebook.listener.OnErrorLogin;
+import com.mobileia.facebook.listener.OnInviteComplete;
 import com.mobileia.facebook.listener.OnSuccessLogin;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,5 +46,22 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .build();
+    }
+
+    public void onClickInviteGame(View view){
+        MobileiaFacebook.getInstance().setActivity(this);
+        MobileiaFacebook.getInstance().sendInvitation("Invitación para ShowProde:", new OnInviteComplete() {
+            @Override
+            public void onSuccess(ArrayList<Profile> profiles) {
+                for(Profile profile : profiles){
+                    System.out.println("INVITACION: " + profile.firstname);
+                }
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 }

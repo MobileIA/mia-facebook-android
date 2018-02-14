@@ -7,6 +7,9 @@
         <activity
             android:name=".FacebookActivity"
             android:theme="@style/MobileiaFacebook.Internal.Theme.Transparent" />
+        <activity
+            android:name=".activity.InviteGameActivity"
+            android:theme="@style/MobileiaFacebook.Internal.Theme.Transparent" />
     </application>
 
 </manifest>

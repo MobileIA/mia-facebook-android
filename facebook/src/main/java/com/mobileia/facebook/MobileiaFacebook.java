@@ -3,10 +3,13 @@ package com.mobileia.facebook;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.mobileia.facebook.activity.InviteGameActivity;
 import com.mobileia.facebook.entity.Profile;
 import com.mobileia.facebook.listener.OnErrorLogin;
+import com.mobileia.facebook.listener.OnInviteComplete;
 import com.mobileia.facebook.listener.OnSuccessLogin;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -31,6 +34,10 @@ public class MobileiaFacebook {
      */
     protected OnErrorLogin mErrorListener;
     /**
+     * Almacena el listener para las respuestas de invitaciones
+     */
+    protected OnInviteComplete mInviteListener;
+    /**
      * Determina si se esta logueando o no.
      */
     public boolean isLoading = false;
@@ -42,6 +49,18 @@ public class MobileiaFacebook {
     public void login(){
         // Iniciar activity
         startTranparentActivity();
+    }
+
+    /**
+     * Funcion para enviar invitaciones
+     * @param message
+     * @param callback
+     */
+    public void sendInvitation(String message, OnInviteComplete callback){
+        // Guardamos callback
+        mInviteListener = callback;
+        // Abrimos activity
+        InviteGameActivity.startActivity(mActivity, message);
     }
 
     /**
@@ -60,6 +79,16 @@ public class MobileiaFacebook {
     public void processErrorResponse(String message){
         if(mErrorListener != null){
             mErrorListener.onError(message);
+        }
+    }
+
+    /**
+     * Funcion que se llama si se pudo enviar correctamente las invitaciones
+     * @param profiles
+     */
+    public void processInviteResponse(ArrayList<Profile> profiles){
+        if(mInviteListener != null){
+            mInviteListener.onSuccess(profiles);
         }
     }
     /**
